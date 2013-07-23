@@ -29,14 +29,16 @@ void CloudsVisualSystemDataCascade::selfSetup(){
 	offsetMesh.addTexCoord(ofVec2f(width,1));
 	
 	offsetMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-	
+
 	reloadShaders();
 		
 	regenerate = true;
-	
-	//choose a random preset
 }
 
+//--------------------------------------------------------------
+void CloudsVisualSystemDataCascade::selfPresetLoaded(string presetPath){
+	regenerate = true;
+}
 
 //--------------------------------------------------------------
 void CloudsVisualSystemDataCascade::reloadShaders(){

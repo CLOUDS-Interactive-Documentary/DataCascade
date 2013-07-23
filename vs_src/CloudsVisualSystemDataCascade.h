@@ -43,6 +43,8 @@ class CloudsVisualSystemDataCascade : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 	
+	void selfPresetLoaded(string presetPath);
+	
   protected:
 
 	int width, height;
