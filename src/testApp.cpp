@@ -5,9 +5,9 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	
-	computation.setup();
+	dataCascade.setup();
 	
-	computation.playSystem();
+	dataCascade.playSystem();
 	
 	ofToggleFullscreen();
 }
