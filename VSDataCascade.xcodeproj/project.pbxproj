@@ -28,10 +28,13 @@
 		E7424F42179ED5E400B2F0A3 /* display.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7424F3E179ED5E400B2F0A3 /* display.vert */; };
 		E7424F43179ED5E400B2F0A3 /* update.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7424F3F179ED5E400B2F0A3 /* update.frag */; };
 		E7424F44179ED5E400B2F0A3 /* update.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7424F40179ED5E400B2F0A3 /* update.vert */; };
-		E7424F50179ED6AB00B2F0A3 /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7424F4B179ED6AB00B2F0A3 /* CloudsRGBDCombinedRenderer.cpp */; };
 		E7424F51179ED6AB00B2F0A3 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7424F4D179ED6AB00B2F0A3 /* CloudsVisualSystem.cpp */; };
 		E7424FD2179EF7D300B2F0A3 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7424FD0179EF7D300B2F0A3 /* CloudsVisualSystemDataCascade.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
+		E78106C617A3327E00C9689D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78106C217A3327E00C9689D /* CloudsRGBDCamera.cpp */; };
+		E78106C717A3327E00C9689D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78106C417A3327E00C9689D /* CloudsRGBDVideoPlayer.cpp */; };
+		E78106E117A3329700C9689D /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E78106DC17A3329700C9689D /* ofxAVFVideoPlayer.mm */; };
+		E78106E217A3329700C9689D /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E78106DE17A3329700C9689D /* ofxAVFVideoRenderer.m */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
 		E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB91714899C00705E7A /* tinyxmlparser.cpp */; };
@@ -162,14 +165,20 @@
 		E7424F3E179ED5E400B2F0A3 /* display.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = display.vert; path = shaders/display.vert; sourceTree = "<group>"; };
 		E7424F3F179ED5E400B2F0A3 /* update.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = update.frag; path = shaders/update.frag; sourceTree = "<group>"; };
 		E7424F40179ED5E400B2F0A3 /* update.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = update.vert; path = shaders/update.vert; sourceTree = "<group>"; };
-		E7424F4B179ED6AB00B2F0A3 /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
-		E7424F4C179ED6AB00B2F0A3 /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
 		E7424F4D179ED6AB00B2F0A3 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E7424F4E179ED6AB00B2F0A3 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E7424F4F179ED6AB00B2F0A3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E7424FD0179EF7D300B2F0A3 /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
 		E7424FD1179EF7D300B2F0A3 /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		E78106C217A3327E00C9689D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
+		E78106C317A3327E00C9689D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
+		E78106C417A3327E00C9689D /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
+		E78106C517A3327E00C9689D /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
+		E78106DB17A3329700C9689D /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
+		E78106DC17A3329700C9689D /* ofxAVFVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAVFVideoPlayer.mm; sourceTree = "<group>"; };
+		E78106DD17A3329700C9689D /* ofxAVFVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoRenderer.h; sourceTree = "<group>"; };
+		E78106DE17A3329700C9689D /* ofxAVFVideoRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofxAVFVideoRenderer.m; sourceTree = "<group>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
 		E7846F431714887E00705E7A /* ofxUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIBiLabelSlider.h; sourceTree = "<group>"; };
@@ -411,6 +420,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E78106C817A3329600C9689D /* ofxAVFVideoPlayer */,
 				E7CF78FD1753FF32006B7D41 /* ofxTextInputField */,
 				E7CF78DD1753FEEB006B7D41 /* ofxMSATimer */,
 				E7CF78D91753FED8006B7D41 /* ofxRange */,
@@ -519,14 +529,36 @@
 		E7424F49179ED6AB00B2F0A3 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E7424F4C179ED6AB00B2F0A3 /* CloudsRGBDCombinedRenderer.h */,
-				E7424F4B179ED6AB00B2F0A3 /* CloudsRGBDCombinedRenderer.cpp */,
+				E78106C317A3327E00C9689D /* CloudsRGBDCamera.h */,
+				E78106C217A3327E00C9689D /* CloudsRGBDCamera.cpp */,
+				E78106C417A3327E00C9689D /* CloudsRGBDVideoPlayer.cpp */,
+				E78106C517A3327E00C9689D /* CloudsRGBDVideoPlayer.h */,
 				E7424F4E179ED6AB00B2F0A3 /* CloudsVisualSystem.h */,
 				E7424F4D179ED6AB00B2F0A3 /* CloudsVisualSystem.cpp */,
 				E7424F4F179ED6AB00B2F0A3 /* README.md */,
 			);
 			path = VisualSystemsLibrary;
 			sourceTree = SOURCE_ROOT;
+		};
+		E78106C817A3329600C9689D /* ofxAVFVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E78106DA17A3329700C9689D /* src */,
+			);
+			name = ofxAVFVideoPlayer;
+			path = ../../../addons/ofxAVFVideoPlayer;
+			sourceTree = "<group>";
+		};
+		E78106DA17A3329700C9689D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E78106DB17A3329700C9689D /* ofxAVFVideoPlayer.h */,
+				E78106DC17A3329700C9689D /* ofxAVFVideoPlayer.mm */,
+				E78106DD17A3329700C9689D /* ofxAVFVideoRenderer.h */,
+				E78106DE17A3329700C9689D /* ofxAVFVideoRenderer.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
 		};
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
@@ -1186,9 +1218,12 @@
 				E7424F42179ED5E400B2F0A3 /* display.vert in Sources */,
 				E7424F43179ED5E400B2F0A3 /* update.frag in Sources */,
 				E7424F44179ED5E400B2F0A3 /* update.vert in Sources */,
-				E7424F50179ED6AB00B2F0A3 /* CloudsRGBDCombinedRenderer.cpp in Sources */,
 				E7424F51179ED6AB00B2F0A3 /* CloudsVisualSystem.cpp in Sources */,
 				E7424FD2179EF7D300B2F0A3 /* CloudsVisualSystemDataCascade.cpp in Sources */,
+				E78106C617A3327E00C9689D /* CloudsRGBDCamera.cpp in Sources */,
+				E78106C717A3327E00C9689D /* CloudsRGBDVideoPlayer.cpp in Sources */,
+				E78106E117A3329700C9689D /* ofxAVFVideoPlayer.mm in Sources */,
+				E78106E217A3329700C9689D /* ofxAVFVideoRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
