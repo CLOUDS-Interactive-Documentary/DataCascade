@@ -24,6 +24,9 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7250E8717A33BDE00C39241 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7250E8617A33BDE00C39241 /* AVFoundation.framework */; };
+		E7250E8917A33BEB00C39241 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7250E8817A33BEB00C39241 /* CoreMedia.framework */; };
+		E7250E8B17A33BF500C39241 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7250E8A17A33BF500C39241 /* QuartzCore.framework */; };
 		E7424F41179ED5E400B2F0A3 /* display.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7424F3D179ED5E400B2F0A3 /* display.frag */; };
 		E7424F42179ED5E400B2F0A3 /* display.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7424F3E179ED5E400B2F0A3 /* display.vert */; };
 		E7424F43179ED5E400B2F0A3 /* update.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7424F3F179ED5E400B2F0A3 /* update.frag */; };
@@ -161,10 +164,13 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		E7424F3D179ED5E400B2F0A3 /* display.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = display.frag; path = shaders/display.frag; sourceTree = "<group>"; };
-		E7424F3E179ED5E400B2F0A3 /* display.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = display.vert; path = shaders/display.vert; sourceTree = "<group>"; };
-		E7424F3F179ED5E400B2F0A3 /* update.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = update.frag; path = shaders/update.frag; sourceTree = "<group>"; };
-		E7424F40179ED5E400B2F0A3 /* update.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = update.vert; path = shaders/update.vert; sourceTree = "<group>"; };
+		E7250E8617A33BDE00C39241 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = /System/Library/Frameworks/AVFoundation.framework; sourceTree = "<absolute>"; };
+		E7250E8817A33BEB00C39241 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = /System/Library/Frameworks/CoreMedia.framework; sourceTree = "<absolute>"; };
+		E7250E8A17A33BF500C39241 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		E7424F3D179ED5E400B2F0A3 /* display.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = display.frag; path = shaders/display.frag; sourceTree = "<group>"; };
+		E7424F3E179ED5E400B2F0A3 /* display.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = display.vert; path = shaders/display.vert; sourceTree = "<group>"; };
+		E7424F3F179ED5E400B2F0A3 /* update.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = update.frag; path = shaders/update.frag; sourceTree = "<group>"; };
+		E7424F40179ED5E400B2F0A3 /* update.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = update.vert; path = shaders/update.vert; sourceTree = "<group>"; };
 		E7424F4D179ED6AB00B2F0A3 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E7424F4E179ED6AB00B2F0A3 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E7424F4F179ED6AB00B2F0A3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -393,6 +399,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7250E8B17A33BF500C39241 /* QuartzCore.framework in Frameworks */,
+				E7250E8917A33BEB00C39241 /* CoreMedia.framework in Frameworks */,
+				E7250E8717A33BDE00C39241 /* AVFoundation.framework in Frameworks */,
 				E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -440,6 +449,9 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E7250E8A17A33BF500C39241 /* QuartzCore.framework */,
+				E7250E8817A33BEB00C39241 /* CoreMedia.framework */,
+				E7250E8617A33BDE00C39241 /* AVFoundation.framework */,
 				E761F4D71622CA3D00029E43 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
 				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
@@ -531,8 +543,8 @@
 			children = (
 				E78106C317A3327E00C9689D /* CloudsRGBDCamera.h */,
 				E78106C217A3327E00C9689D /* CloudsRGBDCamera.cpp */,
-				E78106C417A3327E00C9689D /* CloudsRGBDVideoPlayer.cpp */,
 				E78106C517A3327E00C9689D /* CloudsRGBDVideoPlayer.h */,
+				E78106C417A3327E00C9689D /* CloudsRGBDVideoPlayer.cpp */,
 				E7424F4E179ED6AB00B2F0A3 /* CloudsVisualSystem.h */,
 				E7424F4D179ED6AB00B2F0A3 /* CloudsVisualSystem.cpp */,
 				E7424F4F179ED6AB00B2F0A3 /* README.md */,

@@ -45,6 +45,10 @@ class CloudsVisualSystemDataCascade : public CloudsVisualSystem {
 	
 	void selfPresetLoaded(string presetPath);
 	
+	virtual ofCamera& getCameraRef(){
+		return cloudsCamera;
+	}
+	
   protected:
 
 	int width, height;
