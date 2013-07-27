@@ -1,5 +1,6 @@
 
 #include "CloudsVisualSystemDataCascade.h"
+#include "CloudsRGBDVideoPlayer.h"
 
 //--------------------------------------------------------------
 string CloudsVisualSystemDataCascade::getSystemName(){
@@ -33,6 +34,14 @@ void CloudsVisualSystemDataCascade::selfSetup(){
 	reloadShaders();
 		
 	regenerate = true;
+	
+	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
+		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
+								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
+		
+		getRGBDVideoPlayer().swapAndPlay();
+		
+	}
 }
 
 //--------------------------------------------------------------
@@ -146,24 +155,34 @@ void CloudsVisualSystemDataCascade::selfSceneTransformation(){
 void CloudsVisualSystemDataCascade::selfDraw(){
 	
 	drawShader.begin();
-	drawShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
-	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 1);
+	
+	getRGBDVideoPlayer().setupProjectionUniforms(drawShader);
+	
+	drawShader.setUniformTexture("image", targetOffset.getTextureReference(), 1);
+	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 2);
 	drawShader.setUniform1f("height", height);
 	drawShader.setUniform1f("deviation", deviation);
+	drawShader.setUniform1f("pushz", ofGetMouseX());
 	
 	ofPushStyle();
 	ofEnableAlphaBlending();	
 	glPushAttrib(GL_POINT_BIT);
 	
 	ofPushMatrix();
+	
+	setupRGBDTransforms();
+
 	ofSetLineWidth(10);
 	glPointSize(pointSize);
-	float scaleexp = powf(scale,2);
-	ofTranslate(ofGetWidth()/2,ofGetHeight()/2 );
-	ofScale(scaleexp, scaleexp);
-	ofTranslate(-ofGetWidth()/2,-ofGetHeight()/2 );
+	if(getTransitionType() != RGBD){
+		float scaleexp = powf(scale,2);
+		ofTranslate(ofGetWidth()/2,ofGetHeight()/2 );
+		ofScale(scaleexp, scaleexp);
+		ofTranslate(-ofGetWidth()/2,-ofGetHeight()/2 );
+	}
 	
 	mesh.draw();
+	
 	
 	ofPopMatrix();
 	
@@ -171,6 +190,7 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 	ofPopStyle();
 	
 	drawShader.end();
+	
 	
 }
 
@@ -195,6 +215,7 @@ void CloudsVisualSystemDataCascade::selfEnd(){
 
 void CloudsVisualSystemDataCascade::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
+		cout << "Reloading shader" << endl;
 		reloadShaders();
 	}
 }
