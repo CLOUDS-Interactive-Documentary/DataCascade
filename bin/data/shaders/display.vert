@@ -3,6 +3,8 @@ uniform sampler2DRect image;
 uniform sampler2DRect shift;
 uniform float height;
 uniform float deviation;
+uniform vec2 vertexOffset;
+uniform float vertexScale;
 
 //uniform float pushz;
 //varying vec2 vertxy;
@@ -10,6 +12,7 @@ uniform float deviation;
 //RGBD UNIFORMS
 //TEXTURE INFORMATION
 //
+
 uniform sampler2DRect rgbdTexture;
 uniform vec2 textureSize;
 //COLOR
@@ -81,6 +84,9 @@ vec3 rgb2hsl( vec3 _input ){
 
 float depthValueFromSample( vec2 depthPos){
     vec2  halfvec = vec2(.5,.5);
+	depthPos.x = clamp(depthPos.x,depthRect.x+1.,depthRect.x+depthRect.z-2.);
+	depthPos.y = clamp(depthPos.y,depthRect.y+1.,depthRect.y+depthRect.w-2.);
+	
     float depth = rgb2hsl( texture2DRect(rgbdTexture, floor(depthPos) + halfvec ).xyz ).r;
     return depth * ( maxDepth - minDepth ) + minDepth;
 }
@@ -98,17 +104,20 @@ void main(void)
 					gl_Vertex.w);
 
 	pos.x += (texture2DRect(shift, vec2(gl_Vertex.x, pos.y)).r - .5) * deviation;
+	pos.xy *= vertexScale;
+	pos.xy += vertexOffset;
 	
 	//RGBD STUFF
 	// Here we get the position, and account for the vertex position flowing
 	vec2 samplePos = vec2(pos.x, pos.y);
-//	vec2 samplePos = gl_Vertex.xy;
     vec2 depthPos = samplePos + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
 	
+	//if the depth value is equal or less than min depth, then it didn't fall on the person.
 	if(depth <= minDepth){
 		depth = maxDepth;
 	}
+	
 	// Reconstruct the 3D point position
     vec4 rgbdPos = vec4((samplePos.x - depthPP.x) * depth / depthFOV.x,
 						(samplePos.y - depthPP.y) * depth / depthFOV.y,
@@ -118,63 +127,5 @@ void main(void)
 	gl_Position = gl_ModelViewProjectionMatrix * rgbdPos;
 	gl_FrontColor = gl_Color;
 	
-	//extract the normal and pass it along to the fragment shader
-//    vec2  normalPos = samplePos + normalRect.xy;
-//	//    normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
-//	vec4 normalColor = texture2DRect(texture, floor(normalPos) + vec2(.5,.5));
-//	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
-//    normal = -normalize(gl_NormalMatrix * surfaceNormal);
-//	vec3 vert = vec3(gl_ModelViewMatrix * pos);
-//	eye = normalize(-vert);
-	
-//    float right = depthValueFromSample( depthPos + vec2(simplify.x,0.0)  );
-//    float down  = depthValueFromSample( depthPos + vec2(0.0,simplify.y)  );
-//    float left  = depthValueFromSample( depthPos + vec2(-simplify.x,0.0) );
-//    float up    = depthValueFromSample( depthPos + vec2(0.0,-simplify.y) );
-//    float bl    = depthValueFromSample( vec2(floor(depthPos.x - simplify.x),floor( depthPos.y + simplify.y)) );
-//    float ur    = depthValueFromSample( vec2(floor(depthPos.x + simplify.x),floor( depthPos.y - simplify.y)) );
-//    
-//    positionValid = (depth < farClip &&
-//					 right < farClip &&
-//					 down < farClip &&
-//					 left < farClip &&
-//					 up < farClip &&
-//					 bl < farClip &&
-//					 ur < farClip &&
-//					 
-//					 depth > nearClip &&
-//					 right > nearClip &&
-//					 down > nearClip &&
-//					 left > nearClip &&
-//					 up > nearClip &&
-//					 bl > nearClip &&
-//					 ur > nearClip &&
-//					 
-//					 abs(down - depth) < edgeClip &&
-//					 abs(right - depth) < edgeClip &&
-//					 abs(up - depth) < edgeClip &&
-//					 abs(left - depth) < edgeClip &&
-//					 abs(ur - depth) < edgeClip &&
-//					 abs(bl - depth) < edgeClip
-//					 ) ? 1.0 : 0.0;
-	
-//	rgbdPos.z += 1000.;
-//    pos.z += 1000.;
-//	if(positionValid == 0.0){
-//		rgbdPos.z = maxDepth;
-//	}
-//	if(positionValid > .5){
-//	}
-//	else {
-//		gl_Position = gl_ModelViewProjectionMatrix * pos;
-//	}
-    // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
-    //
-
-	//----------END RGBD
-	
-	
-	
-	//pass color info along
 }
 
