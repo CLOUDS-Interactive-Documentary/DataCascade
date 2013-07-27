@@ -104,6 +104,7 @@ void main(void)
 					gl_Vertex.w);
 
 	pos.x += (texture2DRect(shift, vec2(gl_Vertex.x, pos.y)).r - .5) * deviation;
+	
 	pos.xy *= vertexScale;
 	pos.xy += vertexOffset;
 	
