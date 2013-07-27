@@ -125,6 +125,7 @@ void CloudsVisualSystemDataCascade::selfUpdate(){
 	glDisable(GL_DEPTH_TEST);
 
 	sourceOffset.begin();
+	
 	updateShader.begin();
 	updateShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
 	updateShader.setUniformTexture("speed", speedTexture.getTextureReference(), 1);
@@ -162,7 +163,12 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 2);
 	drawShader.setUniform1f("height", height);
 	drawShader.setUniform1f("deviation", deviation);
-	drawShader.setUniform1f("pushz", ofGetMouseX());
+	
+//	vertexOffset = ofVec2f(-1280/2,-720/2);
+	
+	drawShader.setUniform2f("vertexOffset", vertexOffset.x,vertexOffset.y);
+	float scaleexp = powf(scale,2);
+	drawShader.setUniform1f("vertexScale", scaleexp);
 	
 	ofPushStyle();
 	ofEnableAlphaBlending();	
@@ -174,12 +180,6 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 
 	ofSetLineWidth(10);
 	glPointSize(pointSize);
-	if(getTransitionType() != RGBD){
-		float scaleexp = powf(scale,2);
-		ofTranslate(ofGetWidth()/2,ofGetHeight()/2 );
-		ofScale(scaleexp, scaleexp);
-		ofTranslate(-ofGetWidth()/2,-ofGetHeight()/2 );
-	}
 	
 	mesh.draw();
 	
@@ -269,6 +269,7 @@ void CloudsVisualSystemDataCascade::selfSetupRenderGui(){
 	rdrGui->addSlider("speed", 0., 2., &speed);
 	rdrGui->addSlider("point size", 1., 25., &pointSize);
 	rdrGui->addSlider("scale", 1., 10., &scale);
+	rdrGui->add2DPad("offset", ofVec3f(0,-1280*4), ofVec3f(0, -720*4), &vertexOffset );
 }
 
 //--------------------------------------------------------------

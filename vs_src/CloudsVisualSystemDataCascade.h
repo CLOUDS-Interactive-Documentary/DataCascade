@@ -74,7 +74,7 @@ class CloudsVisualSystemDataCascade : public CloudsVisualSystem {
 	float pointSize;
 	float deviation;
 	float colorflip;
-	
+	ofVec3f vertexOffset;
 	bool debug;
 	bool regenerate;
 };
