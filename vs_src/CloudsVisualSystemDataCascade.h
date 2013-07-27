@@ -69,6 +69,10 @@ class CloudsVisualSystemDataCascade : public CloudsVisualSystem {
 		
 	float pathDeviation;
 	
+	float fogMinDepth;
+	float fogMaxDepth;
+	float fogDensity;
+	
 	float speed;
 	float scale;
 	float pointSize;

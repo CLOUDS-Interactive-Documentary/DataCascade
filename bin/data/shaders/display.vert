@@ -6,8 +6,7 @@ uniform float deviation;
 uniform vec2 vertexOffset;
 uniform float vertexScale;
 
-//uniform float pushz;
-//varying vec2 vertxy;
+
 
 //RGBD UNIFORMS
 //TEXTURE INFORMATION
@@ -42,11 +41,10 @@ uniform float nearClip;
 uniform float edgeClip;
 uniform float minDepth;
 uniform float maxDepth;
-
-//varying float positionValid;
-
 //END RGBD UNIFORMS
 
+//fog params
+varying float fogFactor;
 
 //RGBD STUFF::
 vec3 rgb2hsl( vec3 _input ){
@@ -84,8 +82,8 @@ vec3 rgb2hsl( vec3 _input ){
 
 float depthValueFromSample( vec2 depthPos){
     vec2  halfvec = vec2(.5,.5);
-	depthPos.x = clamp(depthPos.x,depthRect.x+1.,depthRect.x+depthRect.z-2.);
-	depthPos.y = clamp(depthPos.y,depthRect.y+1.,depthRect.y+depthRect.w-2.);
+	depthPos.x = clamp(depthPos.x,depthRect.x+2.,depthRect.x+depthRect.z-4.);
+	depthPos.y = clamp(depthPos.y,depthRect.y+2.,depthRect.y+depthRect.w-4.);
 	
     float depth = rgb2hsl( texture2DRect(rgbdTexture, floor(depthPos) + halfvec ).xyz ).r;
     return depth * ( maxDepth - minDepth ) + minDepth;
@@ -104,7 +102,6 @@ void main(void)
 					gl_Vertex.w);
 
 	pos.x += (texture2DRect(shift, vec2(gl_Vertex.x, pos.y)).r - .5) * deviation;
-	
 	pos.xy *= vertexScale;
 	pos.xy += vertexOffset;
 	
@@ -125,8 +122,20 @@ void main(void)
 						depth,
 						1.0);
     
+	//FOG STUFF
+	vec3 vVertex = (gl_ModelViewMatrix * pos).xyz;
+	const float LOG2 = 1.442695;
+	gl_FogFragCoord = length(vVertex);
+	fogFactor = exp2(-gl_Fog.density *
+					 gl_Fog.density  *
+					 gl_FogFragCoord *
+					 gl_FogFragCoord *
+					 LOG2);
+	
+	fogFactor = clamp(fogFactor, 0.0, 1.0);
+	//END FOG
+	
 	gl_Position = gl_ModelViewProjectionMatrix * rgbdPos;
 	gl_FrontColor = gl_Color;
-	
 }
 

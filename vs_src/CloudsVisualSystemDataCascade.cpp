@@ -163,27 +163,27 @@ void CloudsVisualSystemDataCascade::selfDraw(){
 	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 2);
 	drawShader.setUniform1f("height", height);
 	drawShader.setUniform1f("deviation", deviation);
-	
-//	vertexOffset = ofVec2f(-1280/2,-720/2);
-	
 	drawShader.setUniform2f("vertexOffset", vertexOffset.x,vertexOffset.y);
+	
 	float scaleexp = powf(scale,2);
 	drawShader.setUniform1f("vertexScale", scaleexp);
 	
 	ofPushStyle();
 	ofEnableAlphaBlending();	
-	glPushAttrib(GL_POINT_BIT);
+	glPushAttrib(GL_POINT_BIT | GL_FOG_BIT);
 	
-	ofPushMatrix();
-	
-	setupRGBDTransforms();
-
-	ofSetLineWidth(10);
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_FOG);
+	glFogi(GL_FOG_COORD_SRC, GL_FOG_COORDINATE);
+//	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
+	glFogf(GL_FOG_START, fogMinDepth);
+	glFogf(GL_FOG_END, fogMaxDepth);
+	glFogf(GL_FOG_DENSITY, powf(fogDensity,2));
 	glPointSize(pointSize);
-	
+
+	ofPushMatrix();
+	setupRGBDTransforms();
 	mesh.draw();
-	
-	
 	ofPopMatrix();
 	
 	glPopAttrib();
@@ -270,6 +270,10 @@ void CloudsVisualSystemDataCascade::selfSetupRenderGui(){
 	rdrGui->addSlider("point size", 1., 25., &pointSize);
 	rdrGui->addSlider("scale", 1., 10., &scale);
 	rdrGui->add2DPad("offset", ofVec3f(0,-1280*4), ofVec3f(0, -720*4), &vertexOffset );
+	rdrGui->addLabel("fog");
+	rdrGui->addRangeSlider("fog range", 0, 5000, &fogMinDepth, &fogMaxDepth);
+	rdrGui->addSlider("fog density", 0, .3, &fogDensity);
+	
 }
 
 //--------------------------------------------------------------
