@@ -46,7 +46,10 @@ class CloudsVisualSystemDataCascade : public CloudsVisualSystem {
 	void selfPresetLoaded(string presetPath);
 	
 	virtual ofCamera& getCameraRef(){
-		return cloudsCamera;
+		if(doRGBD){
+			return cloudsCamera;
+		}
+		return CloudsVisualSystem::getCameraRef();
 	}
 	
   protected:
@@ -73,6 +76,17 @@ class CloudsVisualSystemDataCascade : public CloudsVisualSystem {
 	float fogMaxDepth;
 	float fogDensity;
 	
+	bool doRGBD;
+	
+	bool drawDouble;
+	float doubleOffset;
+	float doubleCheat;
+	
+	bool wrappedOnly;
+	float cylinderWarpFade;
+	float cylinderZ;
+	float cylinderRadius;
+
 	float speed;
 	float scale;
 	float pointSize;

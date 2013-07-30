@@ -1,32 +1,32 @@
 <Canvas>
     <Kind>42</Kind>
-    <Name>TimelineSettings</Name>
+    <Name>Presets</Name>
     <IsMinified>0</IsMinified>
     <XPosition>425.000000000</XPosition>
-    <YPosition>333.000000000</YPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>ENABLE</Name>
+    <Name>DataCascade</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>8</Kind>
-    <Name>DURATION</Name>
-    <Value>21.840999603</Value>
+    <Kind>2</Kind>
+    <Name>DataCascadeClose</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>INDEFINITE</Name>
+    <Name>DoubleTunnel</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBDCascade</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBDTunnel</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>ANIMATE</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>DELETE</Name>
-    <Value>0</Value>
 </Widget>
