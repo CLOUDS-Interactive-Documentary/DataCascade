@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>82.000000000</YPosition>
+    <XPosition>608.000000000</XPosition>
+    <YPosition>180.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>path color flip chance</Name>
-    <Value>0.098522164</Value>
+    <Value>0.280788183</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
